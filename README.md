@@ -110,40 +110,89 @@ resource "aws_s3_bucket" "public_bucket" {
 }
 ```
 
-## 🧑‍💻 1. Local Scanning via VSCode: Lacework Security Extension
+## 🧑‍💻 1. Local Scanning via VSCode: *Lacework Security Extension*
 
-### ✅ Setup
+### 🛠️ Setup
 
-Clone the lab repo `git clone https://github.com/40docs/lab_forticnapp_code_security.git`
+```bash
+git clone https://github.com/40docs/lab_forticnapp_code_security.git
+cd lab_forticnapp_code_security
+```
 
-Install the Lacework Security extension from the VSCode Marketplace.
+!!! info "Install the VSCode Extension"
+\- Open the folder in **Visual Studio Code**
+\- Install the **Lacework Security** extension from the VSCode Marketplace
+\- Click the **shield icon** in the sidebar
+\- Click **“Sign in with Lacework”** to authenticate using OAuth
 
-Open the lab_forticnapp_code_security/ folder in VSCode.
-
-Click the Lacework Shield icon in the sidebar.
-
-Sign in using “Sign in with Lacework” (OAuth).
+---
 
 ### 🧪 Running Scans
 
-From the sidebar panel, choose one of:
+From the Lacework panel in VSCode, you can choose:
 
-Start all scans
+* ✅ **Start all scans**
+* 🛠️ **Start IaC Scan**
+* 🔍 **Start SAST Scan**
+* 📦 **Start SCA Scan**
 
-Start IaC Scan
+!!! note
+All scans run from the **root of the open workspace folder**.
 
-Start SAST Scan
-
-Start SCA Scan
-
-Scans run from the root of the open folder.
+---
 
 ### 📌 Viewing Results
 
-Violating files appear in the Lacework panel.
+* Files with violations appear in the Lacework panel
+* Click a file to view its issues
+* Red-highlighted code indicates exact problem lines
 
-Click a file to view issues.
+!!! tip "SmartFix Support"
+Hover over red-highlighted code to view issue details and apply available **SmartFix** suggestions.
 
-Red-highlighted code shows exact problem lines.
+---
 
-## 🧑‍💻 2. Lacework Github Integration:
+## 🔗 2. GitHub Integration: *Lacework FortiCNAPP*
+
+### 🔧 Steps to Integrate with GitHub
+
+1. Log in to the **Lacework Console**
+2. Navigate to:
+   `Settings → Integrations → Code Security`
+3. Click **Add Integration**
+4. Select:
+
+   * Git provider: **GitHub**
+5. Click **Go to GitHub** and log in
+
+!!! warning "GitHub Permissions Required"
+You must have **Owner** permissions in the GitHub organization to complete the integration.
+
+6. Choose:
+
+   * **All repositories**
+     — or —
+   * **Only select repositories** via dropdown
+7. Click **Install & Authorize**
+
+GitHub will redirect you back to the Lacework console to confirm the integration.
+
+---
+
+### 📊 Post-Integration Behavior
+
+!!! info
+Once integration is complete:
+\- Lacework will automatically scan the **default branch** of connected repositories.
+\- You can view scan results in the Lacework UI.
+
+---
+
+### 🔍 Available Tools After Integration
+
+* **Infrastructure-as-Code Security**
+* **SCA and SAST** vulnerability detection
+* **Secrets detection** for exposed credentials or tokens
+
+!!! tip
+After integration, you can **enable/disable** specific tools per repository via the Lacework Console.
