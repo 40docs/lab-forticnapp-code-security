@@ -1,5 +1,5 @@
 from flask import Flask, request
-from app import get_user, list_files, load_data
+from vuln_app import get_user, list_files, load_data
 
 app = Flask(__name__)
 
