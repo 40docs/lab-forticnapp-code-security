@@ -110,13 +110,40 @@ resource "aws_s3_bucket" "public_bucket" {
 }
 ```
 
-> **What FortiCNAPP detects**: Misconfigured IaC (exposed resources), flagging policy violations for public cloud services.
+## 🧑‍💻 1. Local Scanning via VSCode: Lacework Security Extension
 
----
+### ✅ Setup
 
-## 🔍 What You'll Learn
+Clone the lab repo `git clone https://github.com/40docs/lab_forticnapp_code_security.git`
 
-- How to scan code locally with the Lacework CLI
-- How secrets and vulnerabilities are detected in real time
-- How FortiCNAPP recommends and even applies fixes (SmartFix/AutoFix)
-- How to enforce security gates in CI/CD pipelines
+Install the Lacework Security extension from the VSCode Marketplace.
+
+Open the lab_forticnapp_code_security/ folder in VSCode.
+
+Click the Lacework Shield icon in the sidebar.
+
+Sign in using “Sign in with Lacework” (OAuth).
+
+### 🧪 Running Scans
+
+From the sidebar panel, choose one of:
+
+Start all scans
+
+Start IaC Scan
+
+Start SAST Scan
+
+Start SCA Scan
+
+Scans run from the root of the open folder.
+
+### 📌 Viewing Results
+
+Violating files appear in the Lacework panel.
+
+Click a file to view issues.
+
+Red-highlighted code shows exact problem lines.
+
+## 🧑‍💻 2. Lacework Github Integration:
