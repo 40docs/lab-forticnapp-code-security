@@ -17,18 +17,18 @@ By the end, you’ll learn how to detect, remediate, and prevent security issues
 ## ✅ Repo Structure
 
 ```txt
-forticnapp-demo/
+lab_forticnapp_code_security/
 ├── app/
-│   ├── app.py             # Flask app using secret from config
-│   ├── config.py          # ❌ Hardcoded AWS secret
-│   ├── Dockerfile         # ❌ Insecure container config
-│   ├── requirements.txt   # ❌ Known vulnerable package versions
-│   ├── routes.py          # ❌ Flask routes using insecure functions
-│   └── vuln_app.py        # ❌ Contains internal code weaknesses (SAST)
+│   ├── app.py              # Flask app with all insecure routes
+│   ├── config.py           # ❌ Hardcoded AWS secret
+│   ├── Dockerfile          # ❌ Insecure container config
+│   ├── requirements.txt    # ❌ Known vulnerable packages
+│   └── vuln_app.py         # ❌ Insecure helper functions (SAST triggers)
 ├── terraform/
-│   ├── resource_aws_s3_bucket.tf  # ❌ Public S3 bucket
-│   └── resource_aws_subnet.tf     # ❌ Public IP on subnet
+│   ├── resource_aws_s3_bucket.tf   # ❌ Public S3 bucket
+│   └── resource_aws_subnet.tf      # ❌ Public subnet
 ├── README.md
+
 ```
 
 ## 🧑‍💻 1. Local Scanning with Lacework Security (VSCode Extension)
@@ -91,5 +91,13 @@ Scans run from the root of the open workspace folder.
 ### After Integration
 
 * FortiCNAPP automatically scans the **default branch**
-* View results in the UI or GitHub PR comments
-* Enable/disable IaC, SAST, SCA, and Secrets tools per repo
+* Results appear in the **Lacework UI** and optionally as **GitHub PR comments**
+* You can enable or disable **IaC**, **SAST**, **SCA**, and **Secrets** scanning per repo
+
+#### 💡 Trigger a SmartFix via PR
+
+To see SmartFix in action:
+
+```bash
+echo "# trigger" >> app/requirements.txt && git checkout -b trigger-smartfix && git add app/requirements.txt && git commit -m "Trigger SmartFix" && git push -u origin trigger-smartfix && gh pr create --fill
+```
