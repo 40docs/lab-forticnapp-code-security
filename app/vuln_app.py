@@ -4,10 +4,6 @@ import random
 import hashlib
 import pickle
 
-# ❌ Insecure random token
-def generate_token():
-    return str(random.randint(100000, 999999))
-
 # ❌ Command injection
 def list_files(user_input):
     os.system(f"ls {user_input}")
@@ -18,15 +14,6 @@ def get_user(username):
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM users WHERE name = '%s'" % username)
     return cursor.fetchall()
-
-# ❌ Path traversal
-def read_config(filename):
-    with open(f"./configs/{filename}", "r") as f:
-        return f.read()
-
-# ❌ Insecure deserialization
-def load_data(pickled_data):
-    return pickle.loads(pickled_data)
 
 # ❌ Weak cryptography
 def hash_password(password):
