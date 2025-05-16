@@ -99,7 +99,7 @@ Scans run from the root of the open workspace folder.
 To see SmartFix in action:
 
 ```bash
-echo "# trigger" >> app/requirements.txt && git checkout -b trigger-smartfix && git add app/requirements.txt && git commit -m "Trigger SmartFix" && git push -u origin trigger-smartfix && gh pr create --fill
+echo "paramiko==2.4.1" >> app/requirements.txt && git checkout -b trigger-smartfix && git add app/requirements.txt && git commit -m "Trigger SmartFix" && git push -u origin trigger-smartfix && gh pr create --fill
 ```
 
 Navigate to your Pull Request, after a few minutes a SmartFix comment will be left by the Lacework FortiCNAPP SmartFix Bot.
